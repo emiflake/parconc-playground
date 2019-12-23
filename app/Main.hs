@@ -13,20 +13,13 @@ import Control.Monad
 import Data.Either
 
 urls :: [String]
-urls = concat $
-       [ [ "http://konachan.com/post.json?page=" <> show page
-         | page <- [0..9] ]
+urls = [ "https://xkcd.com/" <> show page <> "/info.0.json"
+       | page <- [1..9]
        ]
 
 main :: IO ()
 main = do
     all <- mapM timedAsyncGetURL urls
-    forkIO $ do
-        hSetBuffering stdin NoBuffering
-        forever $ do
-            c <- getChar
-            when (c == 'q') $
-                mapM_ cancel all
     res <- mapM waitCatch all
-    Logger.glog . show . length . rights $ res
+    Logger.glog . show $ res
     threadDelay 10000

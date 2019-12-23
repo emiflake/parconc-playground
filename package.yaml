@@ -20,12 +20,13 @@ extra-source-files:
 description:         Please see the README on GitHub at <https://github.com/githubuser/parconc-playground#readme>
 
 dependencies:
-- base     >= 4.7 && < 5
-- parallel == 3.2.2.0
-- array    == 0.5.3.0
-- HTTP     == 4000.3.12
-- time     == 1.8.0.2
-- stm      == 2.5.0.0
+- base         >= 4.7 && < 5
+- parallel     == 3.2.2.0
+- array        == 0.5.3.0
+- time         == 1.8.0.2
+- stm          == 2.5.0.0
+- http-conduit == 2.3.7.3
+- text         == 1.2.3.1
 
 library:
   source-dirs: src
