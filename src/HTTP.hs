@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE LambdaCase #-}
-module HTTP (asyncGetURL, timedAsyncGetURL) where
+module HTTP (getURL, asyncGetURL, timedAsyncGetURL) where
 
 import Async
 import Network.HTTP.Conduit

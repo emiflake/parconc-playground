@@ -19,7 +19,5 @@ urls = [ "https://xkcd.com/" <> show page <> "/info.0.json"
 
 main :: IO ()
 main = do
-    all <- mapM timedAsyncGetURL urls
-    res <- mapM waitCatch all
-    Logger.glog . show $ res
-    threadDelay 10000
+    res <- timeout 1000000 (getURL $ head urls)
+    print res
