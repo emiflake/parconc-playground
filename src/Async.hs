@@ -10,7 +10,7 @@ import Control.Concurrent
 import Control.Concurrent.MVar
 import Control.Concurrent.STM
 import Control.Concurrent.STM.TMVar
-
+        
 data Async a = Async ThreadId (STM (Either SomeException a))
 
 instance Functor Async where

@@ -41,6 +41,10 @@ packages:
 #
 extra-deps:
 - HTTP-4000.3.12@sha256:0c551ef7495be186408848c125163af372b2916e4964b72cc7fa111beeef86bf,6008
+- lens-4.18.1@sha256:5c21912d5af370ae608a7e010c8a705e987e42e89bbed306de73f87166251c27,15419
+- lens-aeson-1.1@sha256:5e1c19729fc4cdeb6137390972f3b551423bb6be33a7adbc2fb6accdc9f27903,2210
+- type-equality-1@sha256:aeb9c44abf5d2edf52caff114a7da565d8328fa84bbe194828e4355ea85bf5b3,1457
+- network-3.1.1.1@sha256:b704cb6676c03e98267190df797497587576a2e96094550ea143415239bbe66e,4268
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

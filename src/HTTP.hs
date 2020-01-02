@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE LambdaCase #-}
-module HTTP (getURL, asyncGetURL, timedAsyncGetURL) where
+module HTTP (getURL, asyncGetURL, timedAsyncGetURL, downloadURL, ifNotExists) where
 
 import Async
 import Network.HTTP.Conduit
@@ -9,7 +9,22 @@ import Text.Printf
 import qualified SyncLogger as Logger
 import qualified Data.Text.Lazy          as T
 import qualified Data.Text.Lazy.Encoding as T
+import qualified Data.ByteString.Lazy    as BS
 import Control.Exception
+import System.Directory
+import Control.Monad
+
+ifNotExists :: String -> IO () -> IO ()
+ifNotExists filename io = do
+    e <- doesFileExist filename
+    when (not e) io
+
+downloadURL :: String -> String -> IO ()
+downloadURL file url = do
+    manager <- newManager tlsManagerSettings
+    request <- parseRequest url
+    bs <- httpLbs (request {requestHeaders = [("User-Agent","HTTP-Conduit")]}) manager
+    BS.writeFile file (responseBody bs)
 
 getURL :: String -> IO String
 getURL url = do
